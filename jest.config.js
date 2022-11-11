@@ -4,11 +4,11 @@ export default {
   preset: 'ts-jest',
   setupFiles: ['dotenv/config', './setup-tests.js'],
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
-  "moduleFileExtensions": [
-    "js",
-    "jsx",
-    "tsx",
-    "ts"
+  'moduleFileExtensions': [
+    'js',
+    'jsx',
+    'tsx',
+    'ts'
   ],
   moduleNameMapper: {
     '\\.(css)$': 'identity-obj-proxy',
@@ -29,6 +29,6 @@ export default {
     '/dist', // Do not test files we've transpiled.
   ],
   transform: {
-    '^.+\\.tsx?': [ 'ts-jest', { useESM: true } ],
+    '^.+\\.tsx?': ['ts-jest', { useESM: true }],
   },
-}
+};

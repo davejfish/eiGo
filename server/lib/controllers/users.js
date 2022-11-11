@@ -10,7 +10,8 @@ module.exports = Router()
     try {
       // write out users
     } catch (err) {
-      next(err)
+      next(err);
     }
 
   });
+

@@ -1,5 +1,5 @@
-import request from 'supertest'
-import app from '../app'
+import request from 'supertest';
+import app from '../app';
 import {
   afterAll,
   afterEach,
@@ -8,16 +8,34 @@ import {
   expect,
   it,
   jest,
-} from '@jest/globals'
-import db from '../database.js'
+} from '@jest/globals';
+import db from '../database.js';
+
+const mockUser = {
+  email: 'test@example.com',
+  password: '123456'
+};
+
+const registerAndLogin = async (props = {}) => {
+  const testUser = {
+    ...mockUser,
+    ...props,
+  };
+
+  const agent = request.agent(app);
+  const response = await agent.post('/api/v1/users').send(testUser);
+  const user = response.body;
+
+  return [agent, user];
+};
 
 describe('backend express user routes', () => {
   
   it('expect 1 to be 1', () => {
     expect(1).toBe(1);
-  })
+  });
   
   afterAll((done) => {
-    app.close(done)
-  })
-})
+    app.close(done);
+  });
+});

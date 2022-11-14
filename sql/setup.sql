@@ -1,7 +1,8 @@
 -- Use this file to define your SQL tables.
 -- The SQL in this file will be executed when you run `npm run setup-db`.
 
-DROP TABLE IF EXISTS eigo_users;
+drop table if exists foos;
+drop table if exists cats;
 
 CREATE TABLE eigo_users (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -10,7 +11,35 @@ CREATE TABLE eigo_users (
   passwordhash TEXT NOT NULL
 );
 
-INSERT INTO eigo_users
-(email, passwordhash)
-VALUES
-('fish@test.com', '$2b$10$/XLQ2NtgPH0ZWknA46v44uXryhWfvZR4qXWgx70eNhc4kvMpTKXJK')
+create table cats (
+  id bigint generated always as identity primary key,
+  name varchar
+);
+
+insert into
+  foos (foo)
+values
+  (
+    'bar'
+  ),
+  (
+    'baz'
+  ),
+  (
+    'qux'
+  )
+  ;
+
+insert into
+  cats (name)
+values
+  (
+    'Atonic'
+  ),
+  (
+    'Astrophe'
+  ),
+  (
+    'Cher'
+  )
+  ;

@@ -1,5 +1,6 @@
 import express, { type Request, type Response } from 'express';
 import fooController from './foos.js';
+import users from './lib/controllers/users.js';
 
 const app = express();
 
@@ -9,6 +10,7 @@ const server = app.listen(parseInt(process.env.APP_PORT || '7890'), () => {
 
 // Think of the poor foos.
 app.use('/foos', fooController);
+app.use('/api/v1/users', users);
 
 app.all('*', (req: Request, res: Response) => {
   console.log(`404 for ${req.url}`);

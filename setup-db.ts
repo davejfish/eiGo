@@ -4,6 +4,7 @@ import url from 'node:url';
 import pool from './server/database.js';
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
+
 fs
   .readFile(`${__dirname}/sql/setup.sql`, { encoding: 'utf-8' })
   .then((sql) => pool.query(sql))

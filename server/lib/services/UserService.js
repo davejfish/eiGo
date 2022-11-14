@@ -1,16 +1,15 @@
-const { getUserByEmail } = require('../models/users');
-const User = require('../models/users');
+import User from '../models/Users.js';
+import bcrypt from 'bcrypt';
 
-
-module.exports = class UserService {
+export default class UserService {
 
   static async create({ email, password }) {
-    let user = await getUserByEmail(email);
+    let user = await User.getUserByEmail(email);
     if (user) {
       throw new Error('User already exists');
     }
 
-    const passwordHash = await bcrypt.hash(
+    const passwordhash = await bcrypt.hash(
       password,
       Number(process.env.SALT_ROUNDS),
     );

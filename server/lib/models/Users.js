@@ -1,7 +1,8 @@
-const { default: pool } = require('../../database');
+import jwt from 'jsonwebtoken';
+import pool  from '../../database.js';
 
 
-module.exports = class User {
+export default class User {
   id;
   username;
   email;
@@ -11,7 +12,7 @@ module.exports = class User {
     this.id = id;
     this.username = username;
     this.email = email;
-    this.passwordhash = passwordhash;
+    this.#passwordhash = passwordhash;
   }
 
   static async insert({ username = null, email, passwordhash }) {
@@ -19,7 +20,7 @@ module.exports = class User {
       INSERT INTO eigo_users
       (username, email, passwordhash)
       VALUES ($1, $2, $3)
-      RETURNING *`, [username, email, password]);
+      RETURNING *`, [username, email, passwordhash]);
     return new User(rows[0]);
   }
 

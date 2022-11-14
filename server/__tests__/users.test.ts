@@ -12,6 +12,7 @@ import {
 import db from '../database.js';
 import { setgroups } from 'process';
 import pool from '../database.js';
+import setupDb from '../setup-data';
 
 const mockUser = {
   email: 'test@example.com',
@@ -33,8 +34,7 @@ const registerAndLogin = async (props = {}) => {
 
 describe('backend express user routes', () => {
   beforeEach(() => {
-    // setup the pool
-    // setup(pool);
+    setupDb();
   });
   
   it('expect 1 to be 1', () => {
@@ -42,18 +42,13 @@ describe('backend express user routes', () => {
   });
 
   it('#POST /api/v1/users/sessions/sign-up should create and login a new user', async () => {
-    const response = await request(app).post('/api/v1/users/sessions/sign-up').send(mockUser);
+    const response = await request(app).post('/users/sessions/sign-up').send(mockUser);
     console.log('response.body is: ', response.body);
     expect(response.status).toBe(200);
     expect(response.body).toEqual({
-      id: expect.any(String),
-      username: null,
-      email: 'test@example.com'
+      message: expect.any(String),
+      user: expect.any(String),
     });
   });
-  
-  afterAll((done) => {
-    // end the pool - pool.end()
-    app.close(done);
-  });
+
 });

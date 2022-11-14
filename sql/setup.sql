@@ -3,12 +3,18 @@
 
 drop table if exists foos;
 drop table if exists cats;
+DROP TABLE IF EXISTS eigo_users;
 
 CREATE TABLE eigo_users (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   username TEXT,
   email TEXT NOT NULL,
   passwordhash TEXT NOT NULL
+);
+
+CREATE TABLE foos (
+  id BIGINT GENERATED ALWAYS AS IDENTITY,
+  foo TEXT NOT NULL
 );
 
 create table cats (

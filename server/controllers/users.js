@@ -1,10 +1,10 @@
-const { Router } = require('express');
-const User = require('../models/users');
-const UserService = require('../services/UserService');
+import { Router } from 'express';
+import User from '../lib/models/users.js';
+import UserService from '../lib/services/UserService.js';
 
 const ONE_DAY_IN_MS = 1000 * 24 * 24 * 60;
 
-module.exports = Router()
+export default Router()
   .post('/sessions/sign-up', async (req, res, next) => {
     try {
       // write out users
@@ -21,9 +21,17 @@ module.exports = Router()
           user: token,
         });
     } catch (err) {
-      console.log(err);
+      next(err);
+    } 
+  })
+  .get('/me', async (req, res, next) => {
+    try {
+      console.log('inside get');
+      res.json({
+        message: 'we got something'
+      });
+    } catch (err) {
       next(err);
     }
-
   });
 

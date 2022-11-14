@@ -6,18 +6,20 @@
  * Since API_PREFIX adds the /api/v1, you needn't do it here in your routes.
  ******************************************************************************/
 
-import express, { type Router } from 'express'
-import fooController from './controllers/foos.js'
+import express, { type Router } from 'express';
+import fooController from './controllers/foos.js';
 // Here we demonstrate that JavaScript files can be included from TypeScript
 // files on the server side.
-import catsController from './controllers/cats.js'
+import catsController from './controllers/cats.js';
+import users from './controllers/users.js';
 
 
 export default (): Router => {
-  const prefixRouter = express.Router()
+  const prefixRouter = express.Router();
   // Think of the poor foos.
-  prefixRouter.use('/foos', fooController)
-  prefixRouter.use('/cats', catsController)
+  prefixRouter.use('/foos', fooController);
+  prefixRouter.use('/cats', catsController);
+  prefixRouter.use('/users', users);
 
-  return prefixRouter
-}
+  return prefixRouter;
+};

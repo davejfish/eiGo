@@ -22,9 +22,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/testing-library__jest-dom": "5.14.5",
+    "bcrypt": "^5.1.0",
     "classnames": "^2.3.2",
     "dotenv": "^16.0.2",
+    "jsonwebtoken": "^8.5.1",
     "pg": "^8.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

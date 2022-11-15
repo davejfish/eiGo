@@ -22,4 +22,18 @@ export default class UserService {
     const token = await User.signIn(user);
     return [user, token];
   }
+
+  static async getUser({ email }) {
+    const currentUser = User.getUserByEmail(email);
+    if (currentUser) {
+      return currentUser;
+    }
+    return null;
+  }
+
+  static checkPassword(password, user) {
+    if (!bcrypt.compareSync(password, user.passwordhash))
+      throw new Error('invalid credentials');
+  }
+
 };

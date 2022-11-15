@@ -39,4 +39,8 @@ export default class User {
     return new User(rows[0]);
   }
 
+  get passwordhash() {
+    return this.#passwordhash;
+  }
+
 };

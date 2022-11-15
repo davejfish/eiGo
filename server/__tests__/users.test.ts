@@ -36,19 +36,22 @@ describe('backend express user routes', () => {
   beforeEach(() => {
     setupDb();
   });
-  
-  it('expect 1 to be 1', () => {
-    expect(1).toBe(1);
-  });
 
   it('#POST /api/v1/users/sessions/sign-up should create and login a new user', async () => {
     const response = await request(app).post('/users/sessions/sign-up').send(mockUser);
-    console.log('response.body is: ', response.body);
     expect(response.status).toBe(200);
     expect(response.body).toEqual({
       message: expect.any(String),
       user: expect.any(String),
     });
+  });
+
+  it('#POST /sessions/sign-in should sign in an existing user', async () => {
+    const response = await request(app).post('/users/sessions/sign-in').send({
+      email: 'testUser@test.com',
+      password: '123456'
+    });
+    expect(response.status).toBe(200);
   });
 
 });

@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import User from '../lib/models/users.js';
 import UserService from '../lib/services/UserService.js';
+import authenticate from '../middleware/authenticate.js';
 
 const ONE_DAY_IN_MS = 1000 * 24 * 24 * 60;
 
@@ -39,12 +40,9 @@ export default Router()
       next(err);
     }
   })
-  .get('/me', async (req, res, next) => {
+  .get('/me', authenticate, (req, res, next) => {
     try {
-      console.log('inside get');
-      res.json({
-        message: 'we got something'
-      });
+      res.json(req.user);
     } catch (err) {
       next(err);
     }

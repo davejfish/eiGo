@@ -26,7 +26,7 @@ const registerAndLogin = async (props = {}) => {
   };
 
   const agent = request.agent(app);
-  const response = await agent.post('/api/v1/users').send(testUser);
+  const response = await agent.post('/users/sessions/sign-up').send(testUser);
   const user = response.body;
 
   return [agent, user];
@@ -52,6 +52,16 @@ describe('backend express user routes', () => {
       password: '123456'
     });
     expect(response.status).toBe(200);
+  });
+
+  it('#GET /me should return the current user', async () => {
+    const [agent, user] = await registerAndLogin();
+    const response = await agent.get('/users/me');
+    expect(response.body).toEqual({
+      id: expect.any(String),
+      email: 'test@example.com',
+      username: null,
+    });
   });
 
 });

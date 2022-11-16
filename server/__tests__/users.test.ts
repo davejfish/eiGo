@@ -34,7 +34,7 @@ const registerAndLogin = async (props = {}) => {
 
 describe('backend express user routes', () => {
   beforeEach(() => {
-    setupDb();
+    return setupDb();
   });
 
   it('#POST /api/v1/users/sessions/sign-up should create and login a new user', async () => {
@@ -61,6 +61,8 @@ describe('backend express user routes', () => {
       id: expect.any(String),
       email: 'test@example.com',
       username: null,
+      exp: expect.any(Number),
+      iat: expect.any(Number),
     });
   });
 

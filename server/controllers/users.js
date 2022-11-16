@@ -30,6 +30,8 @@ export default Router()
       res
         .cookie(process.env.COOKIE_NAME, token, {
           httpOnly: true,
+          secure: process.env.SECURE_COOKIES === 'true',
+          sameSite: process.env.SECURE_COOKIES === 'true' ? 'none' : 'strict',
           maxAge: ONE_DAY_IN_MS,
         })
         .json({

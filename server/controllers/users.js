@@ -48,5 +48,20 @@ export default Router()
     } catch (err) {
       next(err);
     }
+  })
+  .delete('/sessions', (req, res, next) => {
+    try {
+      res
+        .clearCookie(process.env.COOKIE_NAME, {
+          httpOnly: true,
+          maxAge: ONE_DAY_IN_MS,
+        })
+        .status(204)
+        .send({
+          message: 'Successfully signed out',
+        });
+    } catch (err) {
+      next(err);
+    }
   });
 

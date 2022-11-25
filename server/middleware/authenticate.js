@@ -9,6 +9,7 @@ export default async (req, res, next) => {
     req.user = user;
     next();
   } catch (err) {
+    console.log('error is: ', err);
     err.status = 401;
     next(err);
   }

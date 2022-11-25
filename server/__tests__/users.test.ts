@@ -66,4 +66,10 @@ describe('backend express user routes', () => {
     });
   });
 
+  it('#DELETE should logout a current user', async () => {
+    const [agent, user] = await registerAndLogin();
+    const response = await agent.delete('/users/sessions');
+    expect(response.status).toBe(204);
+  });
+
 });

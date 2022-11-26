@@ -72,4 +72,15 @@ describe('backend express user routes', () => {
     expect(response.status).toBe(204);
   });
 
+  it('#PUT should update an existing user', async () => {
+    const update = {
+      username: 'loshgoobi'
+    };
+    const [agent] = await registerAndLogin();
+    const user = await agent.get('/users/me');
+    const response = await agent.put(`/users/${user.body.id}`).send(update);
+    expect(response.status).toBe(200);
+    expect(response.body.username).toBe(update.username);
+  });
+
 });

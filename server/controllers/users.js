@@ -49,6 +49,14 @@ export default Router()
       next(err);
     }
   })
+  .put('/:id', authenticate, async (req, res, next) => {
+    try {
+      const response = await User.updateUserByID(req.params.id, req.body);
+      res.json(response);
+    } catch (err) {
+      next(err);
+    }
+  })
   .delete('/sessions', (req, res, next) => {
     try {
       res

@@ -4,8 +4,8 @@ export const mockFetch = (status: number, body: unknown) => {
     return (Promise.resolve({
       status: status,
       json: (): any => {
-        return Promise.resolve(body)
+        return Promise.resolve(body);
       },
-    }) as Promise<Response>)
-  })
-}
+    }) as Promise<Response>);
+  });
+};

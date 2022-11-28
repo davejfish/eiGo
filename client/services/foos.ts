@@ -1,5 +1,5 @@
-import { type Foo } from '../../common/foo'
-import { type ServiceResponse } from './service-utils'
+import { type Foo } from '../../common/foo';
+import { type ServiceResponse } from './service-utils';
 
 export const getFoos = (): Promise<ServiceResponse<ReadonlyArray<Foo>>> => {
   return fetch('/api/v1/foos').then((res) => {
@@ -7,16 +7,16 @@ export const getFoos = (): Promise<ServiceResponse<ReadonlyArray<Foo>>> => {
       return {
         json: json as ReadonlyArray<Foo>,
         status: res.status,
-      }
-    })
-  })
-}
+      };
+    });
+  });
+};
 
 export const deleteFoo = (id: string): Promise<ServiceResponse<unknown>> => {
   return fetch(`/api/v1/foos/${id}`, { method: 'DELETE' }).then((res) => {
     return {
       json: null,
       status: res.status,
-    }
-  })
-}
+    };
+  });
+};

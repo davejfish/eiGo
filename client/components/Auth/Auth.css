@@ -1,24 +1,21 @@
-.auth-form {
-  height: 250px;
+.authForm {
+  height: 200px;
   width: 250px;
   background-color: steelblue;
-}
-
-form {
+  padding: 10px;
   margin: auto;
-  height: 250px;
-  width: 250px;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-form label {
+.authForm label {
   margin: 5px;
 }
 
-form button {
+.authForm button {
   margin: 5px;
   width: fit-content;
 }

@@ -34,7 +34,7 @@ export default {
     '/public', // Do not test files we've transpiled.
   ],
   transform: {
-    '^.+\\.tsx?': [ 'ts-jest', { useESM: true } ],
+    '^.+\\.tsx?': ['ts-jest', { useESM: true }],
     '^.+\\.jsx?': 'babel-jest',
   },
 };

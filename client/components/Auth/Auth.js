@@ -22,13 +22,17 @@ export default function Auth() {
   };
 
   return (
-    <div>
-      <form className={styles.authForm} onSubmit={handleSubmit}>
-        <label htmlFor='email'>email: </label>
-        <input required placeholder='abc@gmail.com' name='email' />
-        <label htmlFor='password'>password: </label>
-        <input required placeholder='password' type='password' name='password' />
-        <button name='submit'>{method}</button>
+    <div className={'block'}>
+      <form className={`${styles.authForm} box`} onSubmit={handleSubmit}>
+        <div className={'field'}>
+          <label className={'label'} htmlFor='email'>email: </label>
+          <input required placeholder='abc@gmail.com' name='email' />
+        </div>
+        <div className={'field'}>
+          <label className={'label'} htmlFor='password'>password: </label>
+          <input required placeholder='password' type='password' name='password' />
+        </div>
+        <button className={'button is-small is-rounded is-warning'} name='submit'>{method}</button>
         {method === 'sign-up' ? <a href='/auth/sign-in'><span>Already have an account? Sign in!</span></a> : 
           <a href='/auth/sign-up'><span>Don't have an account? Sign up!</span></a>
         }

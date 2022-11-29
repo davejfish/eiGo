@@ -1,7 +1,7 @@
 const BASE_URL = 'http://localhost:7890';
 
 export async function signIn(user) {
-  const response = await fetch(`${BASE_URL}/api/v1/users/sessions/sign-in`, {
+  const response = await fetch('/api/v1/users/sessions/sign-in', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -17,7 +17,7 @@ export async function signIn(user) {
 };
 
 export async function signUp(user) {
-  const response = await fetch(`${BASE_URL}/api/v1/users/sessions/sign-up`, {
+  const response = await fetch('/api/v1/users/sessions/sign-up', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -32,7 +32,7 @@ export async function signUp(user) {
 }
 
 export async function getUser() {
-  const response = await fetch(`${BASE_URL}/api/v1/users/me`, {
+  const response = await fetch('/api/v1/users/me', {
     method: 'GET',
     headers: {
       Accept: 'application/json',
@@ -40,9 +40,17 @@ export async function getUser() {
     },
     credentials: 'include',
   });
-  
+
   if (response.ok) {
     const user = await response.json();
     return user;
   }
+  
 };
+
+export async function logoutUser() {
+  const response = await fetch('/api/v1/users/sessions', {
+    method: 'DELETE',
+    credentials: 'include',
+  });
+}

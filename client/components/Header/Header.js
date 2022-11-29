@@ -4,8 +4,6 @@ import styles from './Header.css';
 
 export default function Header() {
   const { user, setUser, loading } = useUser();
-  console.log('inside header user is: ', user);
-  console.log('loading is: ', loading);
 
   const handleClick = () => {
     location.replace('/auth/sign-in');
@@ -17,11 +15,11 @@ export default function Header() {
   };
 
   return (
-    <div className={styles.header}>
-      <h2>Eigo</h2>
+    <div className={`${styles.header}`}>
+      <h2>EiGo</h2>
       {user === undefined && loading === false ? 
-        <button onClick={handleClick}>sign-in</button> :
-        <button onClick={handleLogOut}>sign out</button>
+        <button className={`button is-small is-rounded is-info ${loading ? 'is-loading' : ''}`} onClick={handleClick}>sign-in</button> :
+        <button className={`button is-small is-rounded is-info ${loading ? 'is-loading' : ''}`} onClick={handleLogOut}>sign out</button>
       }
     </div>
   );

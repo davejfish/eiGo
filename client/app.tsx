@@ -7,6 +7,7 @@ import Auth from './components/Auth/Auth';
 import { UserContextProvider, useUser } from './context/UserContext.js';
 import Header from './components/Header/Header.js';
 import Footer from './components/Footer/Footer.js';
+import Muncher from './components/Muncher/Muncher';
 
 const container = document.getElementById('app') || document.createElement('div');
 container.id = 'app';
@@ -20,6 +21,7 @@ root.render(
           <Route>
             <Route index element={ <Landing /> } />
             <Route path='auth/:method' element={ <Auth /> } />
+            <Route path='games/muncher' element={ <Muncher /> } />
           </Route>
         </Routes>
         <Footer />

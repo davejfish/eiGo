@@ -1,7 +1,7 @@
 .authForm {
-  height: 200px;
-  width: 250px;
-  background-color: steelblue;
+  height: 250px;
+  width: 300px;
+  background-color: hsl(207, 61%, 53%);
   padding: 10px;
   margin: auto;
   margin-top: 50px;
@@ -13,9 +13,14 @@
 
 .authForm label {
   margin: 5px;
+  color: white;
 }
 
-.authForm button {
-  margin: 5px;
-  width: fit-content;
+.authForm a {
+  color: white;
+  margin-top: 10px;
+}
+
+.authForm span:hover {
+  text-decoration: underline;
 }

@@ -13,8 +13,7 @@ export async function signIn(user) {
   
   const data = await response.json();
   return data;
-
-};
+}
 
 export async function signUp(user) {
   const response = await fetch('/api/v1/users/sessions/sign-up', {
@@ -45,12 +44,17 @@ export async function getUser() {
     const user = await response.json();
     return user;
   }
-  
-};
+}
 
 export async function logoutUser() {
   const response = await fetch('/api/v1/users/sessions', {
     method: 'DELETE',
     credentials: 'include',
   });
+}
+
+export async function enforceUser(user, loading) {
+  if (user === undefined && loading === false) {
+    location.replace('/auth/sign-in');
+  }
 }

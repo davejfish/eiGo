@@ -1,0 +1,28 @@
+.muncherGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 80px);
+  grid-gap: 15px;
+  max-width: 600px;;
+  min-width: 400px;
+  height: 80vh;
+  max-height: 600px;
+  margin: 10px auto;
+}
+
+.square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  font-size: 3em;
+  background-color: hsl(207, 61%, 53%);
+  color: white;
+}
+
+.square span {
+  font-size: 1.5rem;;
+}
+
+.square:hover {
+  opacity: .75;
+}

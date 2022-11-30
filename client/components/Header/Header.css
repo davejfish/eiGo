@@ -1,4 +1,4 @@
-.header {
+.EiGoHeader {
   display: flex;
   justify-content: space-between;
   padding: 5px;
@@ -6,6 +6,6 @@
   background-color: hsl(44, 100%, 77%);
 }
 
-.header button {
+.EiGoHeader button {
   margin: 5px;
 }

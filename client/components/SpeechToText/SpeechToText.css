@@ -1,0 +1,9 @@
+.speechContainer button {
+  margin: 2.5px;
+  border: solid 1px black;
+  border-radius: 5px;
+}
+
+.speechContainer button:hover {
+  box-shadow: 2px 3px steelblue;
+}

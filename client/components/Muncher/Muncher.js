@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useUser } from '../../context/UserContext.js';
 import { useMuncher } from '../../hooks/useMuncher.js';
 import { enforceUser } from '../../services/UserService.js';
+import SpeechToText from '../SpeechToText/SpeechToText.js';
 import styles from './Muncher.css';
 
 export default function Muncher() {
@@ -48,6 +49,7 @@ export default function Muncher() {
       <h3>
         points: {points}
       </h3>
+      <SpeechToText />
       <div className={`${styles.muncherGrid}`} style={{ display: 'grid' }}>
         {game.map((square) => (
           <div key={square.position} className={styles.square} onClick={(e) => handleMove(square)}>

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import newGame from '../GameState/muncherState.js';
 
-
 export function useMuncher() {
   // I need to hand a new array to react
   // will get moved to a hook eventually?
@@ -11,6 +10,7 @@ export function useMuncher() {
   const [matchesLeft, setMatchesLeft] = useState(4);
   const [points, setPoints] = useState(0);
   const [lives, setLives] = useState(['x', 'x', 'x']);
+  const [currentPosition, setCurrentPosition] = useState(0);
 
   // get these targets from a fetch?
   const targets = ['ee', 'ea', 'oo', 'ou'];
@@ -53,8 +53,7 @@ export function useMuncher() {
     setGame(newGame);
   };
 
-  const handleClick = (e, box) => {
-    if (box.word === '') return;
+  const handleEat = (box) => {
     const update = targetSound === box.phonics ? '' : box.word;
     if (update === box.word) {
       // add a class, set a timeout then remove that class
@@ -73,14 +72,53 @@ export function useMuncher() {
     setGame([...game]);
   };
 
+  // can modify data to have numbers supporting can move here from foo instead of
+  // can move to logic
+  function canMove(box) {
+    // if box.position is bigger I am trying to move right or down
+    // if currentpos + 1 === box.right return true
+    // if curpos + 6 === bod.down return true
+
+    // if box.position is lower I am trying to move left or up
+    // if current pos - 1 === box.left return true
+    // if current pos - 6 === box.up return true
+
+    if (box.position > currentPosition) {
+      if (currentPosition + 1 === game[box.position - 1].right)
+        return true;
+      if (currentPosition + 6 === game[box.position - 6].down)
+        return true;
+      return false;
+    }
+    if (box.position < currentPosition) {
+      if (currentPosition - 1 === game[box.position + 1].left)
+        return true;
+      if (currentPosition - 6 === game[box.position + 6].up)
+        return true;
+      return false;
+    }
+    return false;
+  }
+
+  const handleMove = (box) => {
+    if (box.position === currentPosition) {
+      handleEat(box);
+    }
+    else {
+      if (canMove(box))
+        setCurrentPosition(box.position);
+    }
+  };
+
   return { 
     game, setGame, 
     targetSound, setTargetSound, 
-    handleClick, 
     points, 
     lives, 
     gameover,
     resetGame,
+    currentPosition,
+    handleMove,
   };
 
 }

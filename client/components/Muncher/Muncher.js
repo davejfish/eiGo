@@ -9,13 +9,14 @@ export default function Muncher() {
   enforceUser(user, loading);
 
   const { 
-    game, 
-    handleClick, 
+    game,  
     targetSound, setTargetSound, 
     points, 
     lives, 
     gameover,
     resetGame,
+    currentPosition,
+    handleMove,
   } = useMuncher();
 
   if (gameover) {
@@ -49,8 +50,9 @@ export default function Muncher() {
       </h3>
       <div className={`${styles.muncherGrid}`} style={{ display: 'grid' }}>
         {game.map((square) => (
-          <div key={square.position} className={styles.square} onClick={(e) => handleClick(e, square)}>
+          <div key={square.position} className={styles.square} onClick={(e) => handleMove(square)}>
             <span>{square.word}</span>
+            {square.position === currentPosition ? <span>player</span> : <></>}
           </div>
         ))}
       </div>

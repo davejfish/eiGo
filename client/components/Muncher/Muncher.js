@@ -18,6 +18,7 @@ export default function Muncher() {
     resetGame,
     currentPosition,
     handleMove,
+    handleEat,
   } = useMuncher();
 
   if (gameover) {
@@ -49,7 +50,7 @@ export default function Muncher() {
       <h3>
         points: {points}
       </h3>
-      <SpeechToText />
+      <SpeechToText game={game} handleEat={handleEat} handleMove={handleMove} curPos={currentPosition} />
       <div className={`${styles.muncherGrid}`} style={{ display: 'grid' }}>
         {game.map((square) => (
           <div key={square.position} className={styles.square} onClick={(e) => handleMove(square)}>

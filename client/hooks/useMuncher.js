@@ -118,7 +118,7 @@ export function useMuncher() {
     gameover,
     resetGame,
     currentPosition,
-    handleMove,
+    handleMove, handleEat,
   };
 
 }

@@ -3,7 +3,8 @@
     "eigo",
     "gameover",
     "loshgoobi",
-    "passwordhash"
+    "passwordhash",
+    "speechly"
   ],
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#2f7c47",

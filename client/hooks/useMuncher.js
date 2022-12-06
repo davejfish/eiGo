@@ -53,6 +53,7 @@ export function useMuncher() {
     setGame(newGame);
   };
 
+  // refactor to include hasSubstring
   const handleEat = (box) => {
     const update = targetSound === box.phonics ? '' : box.word;
     if (update === box.word) {
@@ -102,12 +103,21 @@ export function useMuncher() {
 
   const handleMove = (box) => {
     if (box.position === currentPosition) {
+      hasSubstring(box.word);
       handleEat(box);
     }
     else {
       if (canMove(box))
         setCurrentPosition(box.position);
     }
+  };
+
+  // check for substring
+  const hasSubstring = (word) => {
+    const test = 'eaeaea';
+    const result = test.indexOf(targetSound);
+    // const result = new RegExp(word).test(targetSound);
+    console.log(result);
   };
 
   return { 

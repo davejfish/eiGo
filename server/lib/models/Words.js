@@ -14,16 +14,26 @@ export default class Words {
   }
 
   // add target phonic for better result
-  static async getThreeLetterWords() {
+  static async getTargetWords(difficulty, target) {
     const { rows } = await pool.query(`
-      SELECT word FROM three_letter_words
-      LIMIT 36`);
-    return rows.map(row => new Words(row));
+      SELECT word FROM eigo_words
+      WHERE difficulty = $1 AND word LIKE $2
+      ORDER BY random()
+      LIMIT 5`, [difficulty, `%${target}%`]);
+    return rows.map(row => row);
+  }
+
+  static async getFillerWords(difficulty, target) {
+    const { rows } = await pool.query(`
+      SELECT word FROM eigo_words
+      WHERE difficulty = $1 AND word NOT LIKE $2
+      ORDER BY random()
+      LIMIT 31`, [difficulty, `%${target}%`]);
+    return rows.map(row => row);
   }
   
   static async createWordRows() {
     const [valueString, valueArr] = buildQuery();
-    // runs insert for the table
     const { rows } = await pool.query(`
       INSERT INTO eigo_words
       (word, difficulty)

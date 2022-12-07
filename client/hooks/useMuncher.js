@@ -1,19 +1,20 @@
 import { useState } from 'react';
 import newGame from '../GameState/muncherState.js';
+import useWords from './useWords.js';
 
 export function useMuncher() {
-  // I need to hand a new array to react
-  // will get moved to a hook eventually?
-  const [game, setGame] = useState(newGame);
-  const [targetSound, setTargetSound] = useState('ee');
+  const {
+    targetSound, setTargetSound,
+    difficulty, setDifficulty,
+    game, setGame,
+    loadingGame,
+    muncherError,
+  } = useWords();
   const [gameover, setGameover] = useState(false);
   const [matchesLeft, setMatchesLeft] = useState(4);
   const [points, setPoints] = useState(0);
   const [lives, setLives] = useState(['x', 'x', 'x']);
   const [currentPosition, setCurrentPosition] = useState(0);
-
-  // get these targets from a fetch?
-  const targets = ['ee', 'ea', 'oo', 'ou'];
 
   const checkMatches = () => {
     // when resetting the phonics fetch a whole new game for those sounds
@@ -48,29 +49,39 @@ export function useMuncher() {
     setPoints(0);
     setMatchesLeft(4);
     setLives(['x', 'x', 'x']);
-    setTargetSound('ee');
-    // need to get a whole new game here otherwise it continues the same game
-    setGame(newGame);
+    setCurrentPosition(0);
+    setTargetSound('a');
+  };
+
+  const hasSubstring = (word) => {
+    console.log('word is: ', word);
+
+    // if the word exists check for indexOf
+    // if it is -1 return false, otherwise true
+    if (word !== null) {
+      return word.indexOf(targetSound) !== -1 ? true : false;
+    }
+    return false;
+    
+    // const result = new RegExp(word).test(targetSound);
   };
 
   // refactor to include hasSubstring
   const handleEat = (box) => {
-    const update = targetSound === box.phonics ? '' : box.word;
-    if (update === box.word) {
-      // add a class, set a timeout then remove that class
-      // e.target.classList.add();
-      calculatePoints('-');
-      decrementLives();
-      if (lives.length <= 0){
-        setGameover(true);
-      }
+    if (hasSubstring(box.word)) {
+      calculatePoints('+');
+      setMatchesLeft(prev => prev - 1);
+      checkMatches();
+      game[box.position].word = null;
+      setGame([...game]);
       return;
     } 
-    calculatePoints('+');
-    setMatchesLeft(prev => prev - 1);
-    checkMatches();
-    game[box.position].word = update;
-    setGame([...game]);
+    calculatePoints('-');
+    decrementLives();
+    if (lives.length <= 0){
+      setGameover(true);
+    }
+    return;
   };
 
   // can modify data to have numbers supporting can move here from foo instead of
@@ -112,22 +123,16 @@ export function useMuncher() {
     }
   };
 
-  // check for substring
-  const hasSubstring = (word) => {
-    const test = 'eaeaea';
-    const result = test.indexOf(targetSound);
-    // const result = new RegExp(word).test(targetSound);
-    console.log(result);
-  };
-
   return { 
     game, setGame, 
     targetSound, setTargetSound, 
+    difficulty, setDifficulty,
     points, 
     lives, 
     gameover,
-    resetGame,
     currentPosition,
+    loadingGame,
+    resetGame,
     handleMove, handleEat,
   };
 

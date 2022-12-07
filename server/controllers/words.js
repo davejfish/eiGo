@@ -1,9 +1,22 @@
-import { Router } from 'react-router-dom';
-import Words from '../lib/models/Words';
+import { Router } from 'express';
+import Words from '../lib/models/Words.js';
+import shuffle from '../lib/utils/sort.js';
 
 
 export default Router()
-  .get('/3-letters', async (req, res, next) => {
-    const words = await Words.getThreeLetterWords();
-    console.log('the words are: ', words);
+  .get('/:difficulty/:target', async (req, res, next) => {
+    try {
+      const targetWords = await Words.getTargetWords(
+        req.params.difficulty, 
+        req.params.target.toString()
+      );
+      const fillerWords = await Words.getFillerWords(
+        req.params.difficulty, 
+        req.params.target.toString()
+      );
+      const sortedWords = shuffle([...targetWords, ...fillerWords]);
+      res.json(sortedWords);
+    } catch (err) {
+      next(err);
+    }
   });

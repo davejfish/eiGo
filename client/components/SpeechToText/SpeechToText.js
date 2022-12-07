@@ -24,10 +24,12 @@ export default function SpeechToText({ game, handleMove, handleEat, curPos }) {
     if (match) {
       handleMove(match);
     }
+    resetTranscript();
   };
 
   const handleEatByVoice = (word) => {
     handleEat(game[curPos]);
+    resetTranscript();
   };
 
   const commands = [

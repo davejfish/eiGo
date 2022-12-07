@@ -11,17 +11,21 @@ export default function Muncher() {
 
   const { 
     game,  
-    targetSound, setTargetSound, 
+    targetSound, setTargetSound,
+    difficulty, setDifficulty,
     points, 
     lives, 
     gameover,
-    resetGame,
     currentPosition,
+    loadingGame,
+    resetGame,
     handleMove,
     handleEat,
   } = useMuncher();
 
   if (gameover) {
+    setTargetSound(null);
+    setDifficulty(null);
     return (
       <div>
         <h2 className={'title'} >
@@ -40,7 +44,7 @@ export default function Muncher() {
   return (
     <>
       <h2 className={'title'}>
-        {targetSound} as in bee
+        {targetSound}
       </h2>
       <h3>
         lives: {lives.map((life, index) => (
@@ -52,7 +56,7 @@ export default function Muncher() {
       </h3>
       <SpeechToText game={game} handleEat={handleEat} handleMove={handleMove} curPos={currentPosition} />
       <div className={`${styles.muncherGrid}`} style={{ display: 'grid' }}>
-        {game.map((square) => (
+        {loadingGame ? <h2>loading...</h2> : game.map((square) => (
           <div key={square.position} className={styles.square} onClick={(e) => handleMove(square)}>
             <span>{square.word}</span>
             {square.position === currentPosition ? <span>player</span> : <></>}

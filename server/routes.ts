@@ -10,11 +10,13 @@ import express, { type Router } from 'express';
 // Here we demonstrate that JavaScript files can be included from TypeScript
 // files on the server side.
 import users from './controllers/users.js';
+import words from './controllers/words.js';
 
 
 export default (): Router => {
   const prefixRouter = express.Router();
   prefixRouter.use('/users', users);
+  prefixRouter.use('/words', words);
 
   return prefixRouter;
 };

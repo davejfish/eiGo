@@ -15,7 +15,7 @@ export default function Header() {
   };
 
   return (
-    <div className={`${styles.header}`}>
+    <div className={`${styles.EiGoHeader}`}>
       <h2>EiGo</h2>
       {user === undefined && loading === false ? 
         <button className={`button is-small is-rounded is-info ${loading ? 'is-loading' : ''}`} onClick={handleClick}>sign-in</button> :

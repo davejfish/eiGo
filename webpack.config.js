@@ -19,6 +19,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // want a way to inject configuration via environment variables into the UI at
 // build time. List variables here to ensure they are included.
 const includeEnvironmentVariables = [
+  'REACT_APP_SPEECHLY_API'
 ];
 // Part of a series of settings to allow use of process.env in the web. See also
 // the resolve -> alias setting in this file, the ProvidePlugin usage in this

@@ -62,13 +62,8 @@ export default function SpeechToText({ game, handleMove, handleEat, curPos }) {
   }
 
   return (
-    <div className={styles.speechContainer}>
-      <p>Microphone: {listening ? 'on' : 'off'}</p>
-      <button onClick={listenContinuously}>listen</button>
-      <button onClick={SpeechRecognition.default.stopListening}>Stop</button>
-      <button onClick={resetTranscript}>Reset</button>
-      <h3>your speech</h3>
-      <p>{transcript.toLowerCase()}</p>
+    <div>
+      <h2>command: {transcript}</h2>
     </div>
   );
 }

@@ -14,16 +14,18 @@ export default function useWords() {
       try {
         setLoadingGame(true);
         const game = await newGame(difficulty, targetSound);
-        console.log('new game is: ', game);
         setGame(game);
         setLoadingGame(false);
       } catch (err) {
-        setWordError(err.message);
+        setMuncherError(err.message);
         setLoadingGame(false);
       }
     };
-    if (difficulty && targetSound)
+    if (difficulty && targetSound) {
+      console.log('getting words');
       getWords();
+    }
+      
   }, [difficulty, targetSound]);
   return { 
     targetSound, setTargetSound,

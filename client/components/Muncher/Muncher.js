@@ -2,8 +2,12 @@ import { useState } from 'react';
 import { useUser } from '../../context/UserContext.js';
 import { useMuncher } from '../../hooks/useMuncher.js';
 import { enforceUser } from '../../services/UserService.js';
+import GameOver from '../GameOver/GameOver.js';
+import MuncherGrid from '../MuncherGrid/MuncherGrid.js';
+import SpeechControls from '../SpeechControls/SpeechControls.js';
 import SpeechToText from '../SpeechToText/SpeechToText.js';
 import styles from './Muncher.css';
+
 
 export default function Muncher() {
   const { user, loading } = useUser();
@@ -23,26 +27,8 @@ export default function Muncher() {
     handleEat,
   } = useMuncher();
 
-  if (gameover) {
-    setTargetSound(null);
-    setDifficulty(null);
-    return (
-      <div>
-        <h2 className={'title'} >
-          Game Over!
-        </h2>
-        <h2>total points: {points}</h2>
-        <div>
-          <button onClick={resetGame}>
-            Play again?
-          </button>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <>
+    <div>
       <h2 className={'title'}>
         {targetSound}
       </h2>
@@ -54,16 +40,22 @@ export default function Muncher() {
       <h3>
         points: {points}
       </h3>
+      <SpeechControls />
       <SpeechToText game={game} handleEat={handleEat} handleMove={handleMove} curPos={currentPosition} />
-      <div className={`${styles.muncherGrid}`} style={{ display: 'grid' }}>
-        {loadingGame ? <h2>loading...</h2> : game.map((square) => (
-          <div key={square.position} className={styles.square} onClick={(e) => handleMove(square)}>
-            <span>{square.word}</span>
-            {square.position === currentPosition ? <span>player</span> : <></>}
-          </div>
-        ))}
-      </div>
-    </>
-    
+      {gameover ? 
+        <GameOver 
+          resetGame={resetGame} 
+          points={points} 
+          gameover={gameover} 
+          targetSound={targetSound}
+          setTargetSound={setTargetSound}
+          difficulty={difficulty}
+          setDifficulty={setDifficulty} /> :
+        <MuncherGrid 
+          game={game} 
+          loadingGame={loadingGame} 
+          handleMove={handleMove} 
+          currentPosition={currentPosition} />}
+    </div>
   );
 }

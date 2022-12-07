@@ -16,8 +16,8 @@ export function useMuncher() {
   const [lives, setLives] = useState(['x', 'x', 'x']);
   const [currentPosition, setCurrentPosition] = useState(0);
 
+  // add logic to select a new phonics from phonic group
   const checkMatches = () => {
-    // when resetting the phonics fetch a whole new game for those sounds
     if (matchesLeft < 1) {
       if (targetSound === 'ee') {
         setTargetSound('ea');
@@ -44,13 +44,13 @@ export function useMuncher() {
     setLives([...lives]);
   };
 
-  const resetGame = () => {
+  const resetGame = async () => {
     setGameover(false);
     setPoints(0);
     setMatchesLeft(4);
     setLives(['x', 'x', 'x']);
     setCurrentPosition(0);
-    setTargetSound('a');
+    setGame(await newGame(difficulty, targetSound));
   };
 
   const hasSubstring = (word) => {

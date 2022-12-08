@@ -15,12 +15,14 @@ const container = document.getElementById('app') || document.createElement('div'
 container.id = 'app';
 const root = createRoot(container);
 
-if (process.env.REACT_APP_SPEECHLY_API == null) {
-  console.log(process.env.REACT_APP_SPEECHLY_API);
+// tried for global but too much documentation
+declare  const REACT_APP_SPEECHLY_API: string | undefined;
+
+if (REACT_APP_SPEECHLY_API == null) {
   throw new Error('no speechly key');
 }
 
-const SpeechlySpeechRecognition = createSpeechlySpeechRecognition(process.env.REACT_APP_SPEECHLY_API);
+const SpeechlySpeechRecognition = createSpeechlySpeechRecognition(REACT_APP_SPEECHLY_API);
 SpeechRecognition.applyPolyfill(SpeechlySpeechRecognition);
 
 root.render(

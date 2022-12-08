@@ -16,10 +16,10 @@ export default function SpeechControls() {
   };
 
   return (
-    <div className={styles.speechContainer}>
+    <div className={`${styles.speechContainer}`}>
       <p>Microphone: {listening ? 'on' : 'off'}</p>
-      <button onClick={listenContinuously}>listen</button>
-      <button onClick={SpeechRecognition.default.stopListening}>Stop</button>
+      <button className={'button is-small'} onClick={listenContinuously}>listen</button>
+      <button className={'button is-small'} onClick={SpeechRecognition.default.stopListening}>Stop</button>
     </div>
   );
 }

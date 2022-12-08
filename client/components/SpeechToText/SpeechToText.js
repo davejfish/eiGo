@@ -32,6 +32,10 @@ export default function SpeechToText({ game, handleMove, handleEat, curPos }) {
     resetTranscript();
   };
 
+  const handleClearTranscript = () => {
+    resetTranscript();
+  };
+
   const commands = [
     {
       command: 'move :word',
@@ -40,30 +44,27 @@ export default function SpeechToText({ game, handleMove, handleEat, curPos }) {
     {
       command: 'eat :word',
       callback: (word) => handleEatByVoice(word)
+    },
+    {
+      command: 'clear text',
+      callback: () => handleClearTranscript()
     }
   ];
 
   const {
     transcript,
-    listening,
     resetTranscript,
     browserSupportsSpeechRecognition,
   } = useSpeechRecognition({ commands });
-
-  const listenContinuously = () => {
-    SpeechRecognition.default.startListening({
-      continuous: true,
-      language: 'en-US'
-    });
-  };
 
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser does not support speech recognition.</span>;
   }
 
   return (
-    <div>
-      <h2>command: {transcript}</h2>
+    <div className={styles.transcript}>
+      <h2 >command:</h2>
+      <h2>{transcript}</h2>
     </div>
   );
 }

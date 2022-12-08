@@ -3,6 +3,11 @@ import newGame from '../GameState/muncherState.js';
 import useWords from './useWords.js';
 
 export function useMuncher() {
+  const [gameover, setGameover] = useState(false);
+  const [matchesLeft, setMatchesLeft] = useState(4);
+  const [points, setPoints] = useState(0);
+  const [lives, setLives] = useState(['x', 'x', 'x']);
+  const [currentPosition, setCurrentPosition] = useState(0);
   const {
     targetSound, setTargetSound,
     difficulty, setDifficulty,
@@ -10,11 +15,6 @@ export function useMuncher() {
     loadingGame,
     muncherError,
   } = useWords();
-  const [gameover, setGameover] = useState(false);
-  const [matchesLeft, setMatchesLeft] = useState(4);
-  const [points, setPoints] = useState(0);
-  const [lives, setLives] = useState(['x', 'x', 'x']);
-  const [currentPosition, setCurrentPosition] = useState(0);
 
   // add logic to select a new phonics from phonic group
   const checkMatches = () => {
@@ -31,12 +31,7 @@ export function useMuncher() {
   };
 
   const calculatePoints = (sign) => {
-    if (sign === '+') {
-      setPoints(prev => prev + 200);
-    }
-    else {
-      setPoints(prev => prev - 200);
-    }
+    sign === '+' ? setPoints(prev => prev + 200) : setPoints(prev => prev - 200);
   };
 
   const decrementLives = () => {

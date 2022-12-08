@@ -1,9 +1,9 @@
-.transcript {
+.MuncherInfo {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
-.transcript h2 {
+.MuncherInfo h3 {
   margin: 0 10px;
 }

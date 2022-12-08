@@ -1,5 +1,5 @@
-import useWords from '../../hooks/useWords.js';
 import styles from './GameOver.css';
+import { motion } from 'framer-motion';
 
 export default function GameOver({ 
   gameover, 
@@ -9,7 +9,9 @@ export default function GameOver({
   difficulty, setDifficulty }) {
     
   return (
-    <div>
+    <motion.div className={'box'} 
+      initial={{ opacity: 0 }} 
+      animate={{ transition: { duration: 2 }, opacity: 1 }}>
       {gameover && <div>
         <h2 className={'title'} >
           Game Over!
@@ -43,6 +45,6 @@ export default function GameOver({
           </button>
         </div>
       </div>}
-    </div>
+    </motion.div>
   );
 };

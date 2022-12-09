@@ -108,6 +108,8 @@ export function useMuncher() {
   }
 
   const handleMove = (box) => {
+    if (gameover)
+      return;
     if (box.position === currentPosition) {
       hasSubstring(box.word);
       handleEat(box);

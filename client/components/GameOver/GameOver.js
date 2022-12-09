@@ -9,7 +9,7 @@ export default function GameOver({
   difficulty, setDifficulty }) {
 
   const getRandomPhonics = (arr) => {
-    console.log('arr is: ', arr);
+    arr = arr.split(' ');
     setTargetSound(arr[Math.floor(Math.random() * arr.length)]);
   };
     
@@ -26,7 +26,7 @@ export default function GameOver({
         <div className={`select is-rounded ${styles.foo}`}>
           <select defaultValue={targetSound} onChange={(e) => getRandomPhonics(e.target.value)}>
             <option value={null}>-</option>
-            <option value={['a', 'i', 'u', 'e', 'o']}>a i u e o</option>
+            <option value='a i u e o'>a i u e o</option>
           </select>
         </div>
         <label className={'label'}>difficulty</label>

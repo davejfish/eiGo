@@ -28,7 +28,7 @@ export default function Muncher() {
   } = useMuncher();
 
   return (
-    <div className={styles.MuncherGame}>
+    <div className={`${styles.MuncherGame}`}>
       <h2 className={'title'}>
         {targetSound}
       </h2>
@@ -44,11 +44,12 @@ export default function Muncher() {
           setTargetSound={setTargetSound}
           difficulty={difficulty}
           setDifficulty={setDifficulty} /> :
-        <MuncherGrid 
-          game={game} 
-          loadingGame={loadingGame} 
-          handleMove={handleMove} 
-          currentPosition={currentPosition} />}
+        <></>}
+      <MuncherGrid 
+        game={game} 
+        loadingGame={loadingGame} 
+        handleMove={handleMove} 
+        currentPosition={currentPosition} />
     </div>
   );
 }

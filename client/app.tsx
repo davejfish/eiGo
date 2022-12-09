@@ -6,7 +6,6 @@ import Landing from './components/Landing/Landing';
 import Auth from './components/Auth/Auth';
 import { UserContextProvider, useUser } from './context/UserContext.js';
 import Header from './components/Header/Header.js';
-import Footer from './components/Footer/Footer.js';
 import Muncher from './components/Muncher/Muncher';
 import { createSpeechlySpeechRecognition } from '@speechly/speech-recognition-polyfill';
 import SpeechRecognition from 'react-speech-recognition';
@@ -37,7 +36,6 @@ root.render(
             <Route path='games/muncher' element={ <Muncher /> } />
           </Route>
         </Routes>
-        <Footer />
       </Router>
     </UserContextProvider>
   </React.StrictMode>

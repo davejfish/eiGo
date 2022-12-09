@@ -1,4 +1,5 @@
 import styles from './MuncherGrid.css';
+import player from './ranger_yellow.png';
 
 export default function MuncherGrid({ game, loadingGame, handleMove, currentPosition }) {
 
@@ -7,7 +8,7 @@ export default function MuncherGrid({ game, loadingGame, handleMove, currentPosi
       {loadingGame ? <h2>loading...</h2> : game.map((square) => (
         <div key={square.position} className={styles.square} onClick={(e) => handleMove(square)}>
           <span>{square.word}</span>
-          {square.position === currentPosition ? <span>player</span> : <></>}
+          {square.position === currentPosition ? <img src={player} /> : <></>}
         </div>
       ))}
     </div>

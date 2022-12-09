@@ -21,6 +21,7 @@ export default function useWords() {
         setLoadingGame(false);
       }
     };
+    console.log('difficulty: ', difficulty);
     if (difficulty && targetSound) {
       console.log('getting words');
       getWords();

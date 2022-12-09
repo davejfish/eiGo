@@ -149,6 +149,11 @@ export default {
           loader: 'babel-loader',
         },
       },
+      {
+        test: /\.png/,
+        type: 'asset/resource'
+      },
+
       // TypeScript support. See also the resolve.extensions section for
       // including them by file type.
       {

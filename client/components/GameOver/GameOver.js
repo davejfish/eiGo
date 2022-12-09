@@ -7,39 +7,37 @@ export default function GameOver({
   resetGame, 
   targetSound, setTargetSound, 
   difficulty, setDifficulty }) {
+
+  const getRandomPhonics = (arr) => {
+    console.log('arr is: ', arr);
+    setTargetSound(arr[Math.floor(Math.random() * arr.length)]);
+  };
     
   return (
-    <motion.div className={'box'} 
+    <motion.div className={`${styles.GameOverContainer} box modal is-active`} 
       initial={{ opacity: 0 }} 
       animate={{ transition: { duration: 2 }, opacity: 1 }}>
-      {gameover && <div>
+      {gameover && <div className={`${styles.theContent}`}>
         <h2 className={'title'} >
           Game Over!
         </h2>
         <h2>total points: {points}</h2>
-        <div>
-          <label className={'label'}>
-            phonic group: 
-            <select className={'select'} defaultValue={targetSound} onChange={(e) => setTargetSound(e.target.value)}>
-              <option value={null}>-</option>
-              <option value='a'>a</option>
-              <option value='i'>i</option>
-              <option value='u'>u</option>
-              <option value='e'>e</option>
-              <option value='o'>o</option>
-            </select>
-          </label>
-          <label className={'label'}>
-            difficulty: 
-            <select className={'select'} defaultValue={difficulty} onChange={(e) => setDifficulty(e.target.value)}>
-              <option value={null}>-</option>
-              <option value='E1'>3 letter words</option>
-              <option value='E2'>4-5 letter words</option>
-            </select>
-          </label>
-          
+        <label className={'label'}>phonics</label>
+        <div className={`select is-rounded ${styles.foo}`}>
+          <select defaultValue={targetSound} onChange={(e) => getRandomPhonics(e.target.value)}>
+            <option value={null}>-</option>
+            <option value={['a', 'i', 'u', 'e', 'o']}>a i u e o</option>
+          </select>
         </div>
-        <div>
+        <label className={'label'}>difficulty</label>
+        <div className={`select is-rounded ${styles.foo}`}> 
+          <select defaultValue={difficulty} onChange={(e) => setDifficulty(e.target.value)}>
+            <option value={null}>-</option>
+            <option value='E1'>3 letter words</option>
+            <option value='E2'>4-5 letter words</option>
+          </select>
+        </div>
+        <div className={`${styles.GameOverButton}`}>
           <button className={'button is-info'} onClick={resetGame}>
             Play again?
           </button>

@@ -25,9 +25,11 @@
 
 .square span {
   font-size: calc(1rem + 1vmin);
+  position: absolute;
 }
 
 .square img {
+  position: relative;
   width: calc(1rem + 2vmax);
 }
 

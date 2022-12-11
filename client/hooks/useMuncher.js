@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import newGame from '../GameState/muncherState.js';
+import { useSounds } from './useSounds.js';
 import useWords from './useWords.js';
 
 export function useMuncher() {
@@ -8,6 +9,8 @@ export function useMuncher() {
   const [points, setPoints] = useState(0);
   const [lives, setLives] = useState(['x', 'x', 'x']);
   const [currentPosition, setCurrentPosition] = useState(0);
+  const [playingMusic, setPlayingMusic] = useState(false);
+  const { playCorrect, playWrong, playJump, playMuncherMusic, playGameover } = useSounds();
   const {
     targetSound, setTargetSound,
     difficulty, setDifficulty,
@@ -64,6 +67,7 @@ export function useMuncher() {
   // refactor to include hasSubstring
   const handleEat = (box) => {
     if (hasSubstring(box.word)) {
+      playCorrect();
       calculatePoints('+');
       setMatchesLeft(prev => prev - 1);
       checkMatches();
@@ -71,10 +75,12 @@ export function useMuncher() {
       setGame([...game]);
       return;
     } 
+    playWrong();
     calculatePoints('-');
     decrementLives();
     if (lives.length <= 0){
       setGameover(true);
+      playGameover();
     }
     return;
   };
@@ -115,8 +121,10 @@ export function useMuncher() {
       handleEat(box);
     }
     else {
-      if (canMove(box))
+      if (canMove(box)) {
         setCurrentPosition(box.position);
+        playJump();
+      }
     }
   };
 
@@ -131,6 +139,8 @@ export function useMuncher() {
     loadingGame,
     resetGame,
     handleMove, handleEat,
+    playMuncherMusic,
+    playingMusic, setPlayingMusic
   };
 
 }

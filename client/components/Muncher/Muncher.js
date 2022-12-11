@@ -25,6 +25,8 @@ export default function Muncher() {
     resetGame,
     handleMove,
     handleEat,
+    playMuncherMusic,
+    playingMusic, setPlayingMusic,
   } = useMuncher();
 
   return (

@@ -153,6 +153,10 @@ export default {
         test: /\.png/,
         type: 'asset/resource'
       },
+      {
+        test: /\.mp3/,
+        type: 'asset/resource',
+      },
 
       // TypeScript support. See also the resolve.extensions section for
       // including them by file type.

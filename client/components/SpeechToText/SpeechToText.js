@@ -6,22 +6,18 @@ export default function SpeechToText({ game, handleMove, handleEat, curPos }) {
   function findWord(word) {
     if (game[curPos + 1])
       if (game[curPos + 1].word === word) {
-        console.log('a');
         return game[curPos + 1];
       }
     if (game[curPos + 6])
       if (game[curPos + 6].word === word) {
-        console.log('b');
         return game[curPos + 6];
       }
     if (game[curPos - 1])
       if (game[curPos - 1].word === word) {
-        console.log('c');
         return game[curPos - 1];
       }
     if (game[curPos - 6])
       if (game[curPos - 6].word === word) {
-        console.log('d');
         return game[curPos - 6];
       }
   }

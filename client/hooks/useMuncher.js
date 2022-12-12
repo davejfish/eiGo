@@ -10,7 +10,7 @@ export function useMuncher() {
   const [lives, setLives] = useState(['x', 'x', 'x']);
   const [currentPosition, setCurrentPosition] = useState(0);
   const [playingMusic, setPlayingMusic] = useState(false);
-  const { playCorrect, playWrong, playJump, playMuncherMusic, playGameover } = useSounds();
+  const { playCorrect, playWrong, playJump, playMuncherMusic, playGameover, playNewWords } = useSounds();
   const {
     targetSound, setTargetSound,
     difficulty, setDifficulty,
@@ -22,6 +22,7 @@ export function useMuncher() {
   // add logic to select a new phonics from phonic group
   const checkMatches = () => {
     if (matchesLeft < 1) {
+      playNewWords();
       if (targetSound === 'ee') {
         setTargetSound('ea');
         setMatchesLeft(4);

@@ -4,6 +4,7 @@ import wrong from './sounds/wrong.mp3';
 import jump from './sounds/jump.mp3';
 import muncherMusic from './sounds/game-music.mp3';
 import gameover from './sounds/gameover.mp3';
+import newWords from './sounds/newWords.mp3';
 
 export function useSounds() {
   const [playCorrect] = useSound(correct);
@@ -11,6 +12,7 @@ export function useSounds() {
   const [playJump] = useSound(jump);
   const [playMuncherMusic] = useSound(muncherMusic, { volume: 0.5 });
   const [playGameover] = useSound(gameover);
+  const [playNewWords] = useSound(newWords);
 
-  return { playCorrect, playWrong, playJump, playMuncherMusic, playGameover };
+  return { playCorrect, playWrong, playJump, playMuncherMusic, playGameover, playNewWords };
 };

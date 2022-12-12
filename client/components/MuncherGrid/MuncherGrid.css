@@ -1,0 +1,39 @@
+.muncherGrid {
+  display: grid;
+  max-width: 650px;
+  height: 80%;
+  grid-template-columns: repeat(6, minmax(50px, 100px));
+  grid-auto-rows: 1fr;
+  grid-gap: 10px;
+  margin: 10px 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.square {
+  display: flex;
+  width: 100%;
+  max-width: 100px;
+  min-height: 69px;
+  height: 100%;
+  max-height: 69px;
+  background-color: hsl(207, 61%, 53%);
+  color: white;
+  justify-content: center;
+  align-items: center;
+}
+
+.square span {
+  font-size: calc(.9rem + .8vmin);
+  position: absolute;
+  margin: 5px;
+}
+
+.square img {
+  position: relative;
+  width: calc(1rem + 2vmax);
+}
+
+.square:hover {
+  opacity: .75;
+}

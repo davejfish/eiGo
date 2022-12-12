@@ -42,7 +42,6 @@ const gameData = [
 export default async function newGame(difficulty, target) {
   const words = await fetchWords(difficulty, target);
   return gameData.map((wordData, index) => {
-    console.log('wordData is: ', wordData);
     wordData.word = words[index].word.toLowerCase();
     return wordData;
   });

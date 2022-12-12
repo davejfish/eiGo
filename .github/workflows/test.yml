@@ -28,3 +28,6 @@ jobs:
         env:
           CI: true
           DATABASE_URL: postgres://alchemy:alchemy@postgres:5432/alchemy
+          SALT_ROUNDS: 10
+          JWT_SECRET: secret
+          COOKIE_NAME: session

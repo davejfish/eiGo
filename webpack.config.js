@@ -106,6 +106,9 @@ export default {
     new CopyPlugin({
       patterns: [{ from: 'client/public' }],
     }),
+    new webpack.DefinePlugin({
+      'REACT_APP_SPEECHLY_API': JSON.stringify(process.env.REACT_APP_SPEECHLY_API)
+    }),
     // This extracts CSS data and puts it into a CSS file, which is then
     // included in our index.html. The gathering of the CSS data is done via the
     // plugin's loader, which can be seen in the rules section below for CSS.
@@ -114,7 +117,7 @@ export default {
     // resolve -> alias setting in this file, dotenv usage in this file, and
     // the added process package.
     new webpack.ProvidePlugin({
-      process: 'process/browser',
+      // process: 'process/browser',
       React: 'react',
     }),
     // Prevent Webpack from rebuilding when the css.d.ts files are written out.
@@ -146,6 +149,15 @@ export default {
           loader: 'babel-loader',
         },
       },
+      {
+        test: /\.png/,
+        type: 'asset/resource'
+      },
+      {
+        test: /\.mp3/,
+        type: 'asset/resource',
+      },
+
       // TypeScript support. See also the resolve.extensions section for
       // including them by file type.
       {

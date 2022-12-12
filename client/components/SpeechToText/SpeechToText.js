@@ -32,6 +32,10 @@ export default function SpeechToText({ game, handleMove, handleEat, curPos }) {
     resetTranscript();
   };
 
+  const handleClearTranscript = () => {
+    resetTranscript();
+  };
+
   const commands = [
     {
       command: 'move :word',
@@ -40,35 +44,27 @@ export default function SpeechToText({ game, handleMove, handleEat, curPos }) {
     {
       command: 'eat :word',
       callback: (word) => handleEatByVoice(word)
+    },
+    {
+      command: 'clear text',
+      callback: () => handleClearTranscript()
     }
   ];
 
   const {
     transcript,
-    listening,
     resetTranscript,
     browserSupportsSpeechRecognition,
   } = useSpeechRecognition({ commands });
-
-  const listenContinuously = () => {
-    SpeechRecognition.default.startListening({
-      continuous: true,
-      language: 'en-US'
-    });
-  };
 
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser does not support speech recognition.</span>;
   }
 
   return (
-    <div className={styles.speechContainer}>
-      <p>Microphone: {listening ? 'on' : 'off'}</p>
-      <button onClick={listenContinuously}>listen</button>
-      <button onClick={SpeechRecognition.default.stopListening}>Stop</button>
-      <button onClick={resetTranscript}>Reset</button>
-      <h3>your speech</h3>
-      <p>{transcript.toLowerCase()}</p>
+    <div className={styles.transcript}>
+      <h2 >command:</h2>
+      <h2>{transcript}</h2>
     </div>
   );
 }

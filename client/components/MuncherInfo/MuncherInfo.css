@@ -1,0 +1,7 @@
+.MuncherInfoLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 2px;
+  width: 115px;
+}

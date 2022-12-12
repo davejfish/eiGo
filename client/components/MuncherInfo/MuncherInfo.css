@@ -1,9 +1,7 @@
-.MuncherInfo {
+.MuncherInfoLeft {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
-}
-
-.MuncherInfo h3 {
-  margin: 0 10px;
+  margin-left: 2px;
+  width: 115px;
 }

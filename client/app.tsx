@@ -2,7 +2,6 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import './app.css';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import Landing from './components/Landing/Landing';
 import Auth from './components/Auth/Auth';
 import { UserContextProvider, useUser } from './context/UserContext.js';
 import Header from './components/Header/Header.js';
@@ -31,9 +30,8 @@ root.render(
         <Header />
         <Routes>
           <Route>
-            <Route index element={ <Landing /> } />
             <Route path='auth/:method' element={ <Auth /> } />
-            <Route path='games/muncher' element={ <Muncher /> } />
+            <Route index element={ <Muncher /> } />
           </Route>
         </Routes>
       </Router>

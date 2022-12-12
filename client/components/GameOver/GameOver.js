@@ -1,5 +1,6 @@
 import styles from './GameOver.css';
 import { motion } from 'framer-motion';
+import { doublePhonics, singlePhonics } from '../../utils/wordUtils.js';
 
 export default function GameOver({ 
   gameover, 
@@ -7,6 +8,8 @@ export default function GameOver({
   resetGame, 
   targetSound, setTargetSound, 
   difficulty, setDifficulty }) {
+
+  console.log('single phonics: ', singlePhonics);
 
   const getRandomPhonics = (arr) => {
     arr = arr.split(' ');
@@ -26,7 +29,12 @@ export default function GameOver({
         <div className={`select is-rounded ${styles.foo}`}>
           <select defaultValue={targetSound} onChange={(e) => getRandomPhonics(e.target.value)}>
             <option value={null}>-</option>
-            <option value='a i u e o'>a i u e o</option>
+            {difficulty === 'E1' ? singlePhonics.map(phonics => (
+              <option key={phonics} value={phonics}>{phonics}</option>
+            )) : 
+              doublePhonics.map(phonics => (
+                <option key={phonics} value={phonics}>{phonics}</option>
+              ))}
           </select>
         </div>
         <label className={'label'}>difficulty</label>

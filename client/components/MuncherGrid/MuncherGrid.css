@@ -24,8 +24,9 @@
 }
 
 .square span {
-  font-size: calc(1rem + 1vmin);
+  font-size: calc(.9rem + .8vmin);
   position: absolute;
+  margin: 5px;
 }
 
 .square img {

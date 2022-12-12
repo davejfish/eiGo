@@ -1,0 +1,32 @@
+.LandingForm {
+  height: 250px;
+  width: 300px;
+  background-color: hsl(207, 61%, 53%);
+  padding: 10px;
+  margin: auto;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.LandingForm label {
+  margin: 5px;
+}
+
+.LandingForm button {
+  margin-top: 10px;
+}
+
+.landingContainer {
+  width: fit-content;
+  background-color: hsl(44, 100%, 77%);;
+}
+
+.landing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}

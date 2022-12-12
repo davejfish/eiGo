@@ -1,7 +1,5 @@
 .speechContainer {
-  position: absolute;
-  top: 50px;
-  right: 5px;
+  margin-right: 12px;
 }
 
 .speechContainer button {

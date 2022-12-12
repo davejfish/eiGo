@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import newGame from '../GameState/muncherState.js';
+import { useSounds } from './useSounds.js';
 
 
 export default function useWords() {
-  const [targetSound, setTargetSound] = useState('e');
+  const [targetSound, setTargetSound] = useState(null);
   const [difficulty, setDifficulty] = useState('E1');
   const [game, setGame] = useState(null);
   const [loadingGame, setLoadingGame] = useState(true);

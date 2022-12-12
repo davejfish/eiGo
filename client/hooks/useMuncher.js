@@ -51,17 +51,13 @@ export function useMuncher() {
     setGame(await newGame(difficulty, targetSound));
   };
 
+  // const result = new RegExp(word).test(targetSound);
   const hasSubstring = (word) => {
     console.log('word is: ', word);
-
-    // if the word exists check for indexOf
-    // if it is -1 return false, otherwise true
     if (word !== null) {
       return word.indexOf(targetSound) !== -1 ? true : false;
     }
     return false;
-    
-    // const result = new RegExp(word).test(targetSound);
   };
 
   // refactor to include hasSubstring
@@ -85,17 +81,7 @@ export function useMuncher() {
     return;
   };
 
-  // can modify data to have numbers supporting can move here from foo instead of
-  // can move to logic
   function canMove(box) {
-    // if box.position is bigger I am trying to move right or down
-    // if currentpos + 1 === box.right return true
-    // if curpos + 6 === bod.down return true
-
-    // if box.position is lower I am trying to move left or up
-    // if current pos - 1 === box.left return true
-    // if current pos - 6 === box.up return true
-
     if (box.position > currentPosition) {
       if (currentPosition + 1 === game[box.position - 1].right)
         return true;

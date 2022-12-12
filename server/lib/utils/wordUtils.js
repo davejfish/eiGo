@@ -1,5 +1,3 @@
-import Words from '../../models/Words.js';
-
 const words = `aah
 aba
 abs

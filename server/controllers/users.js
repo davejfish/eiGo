@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import User from '../lib/models/users.js';
+import User from '../lib/models/Users.js';
 import UserService from '../lib/services/UserService.js';
 import authenticate from '../middleware/authenticate.js';
 

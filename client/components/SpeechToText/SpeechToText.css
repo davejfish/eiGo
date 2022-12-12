@@ -2,6 +2,9 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  height: 25px;
+  max-width: 50vw;
+  overflow: hidden;
 }
 
 .transcript h2 {

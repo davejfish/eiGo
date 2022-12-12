@@ -39,6 +39,7 @@ describe('backend express user routes', () => {
 
   it('#POST /api/v1/users/sessions/sign-up should create and login a new user', async () => {
     const response = await request(app).post('/users/sessions/sign-up').send(mockUser);
+    console.log('response is: ', response);
     expect(response.status).toBe(200);
     expect(response.body).toEqual({
       message: expect.any(String),

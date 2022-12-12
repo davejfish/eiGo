@@ -14,6 +14,7 @@ import routes from './routes.js';
 import errorHandler from './middleware/error.js';
 
 dotenv.config();
+console.log('-----------> ', process.env);
 
 const app = express();
 app.use(express.json());

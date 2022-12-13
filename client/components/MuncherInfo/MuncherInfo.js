@@ -1,16 +1,13 @@
 import styles from './MuncherInfo.css';
+import { motion } from 'framer-motion';
+import LivesDisplay from '../LivesDisplay/LivesDisplay.js';
+import ScoreDisplay from '../ScoreDisplay/ScoreDisplay.js';
 
 export default function MuncherInfo({ lives, points }) {
   return (
-    <div className={styles.MuncherInfoLeft}>
-      <h3 className={'block'}>
-        lives: {lives.map((life, index) => (
-          <span key={index + 1}>{life}</span>
-        ))}
-      </h3>
-      <h3 className={'block'}>
-        points: {points}
-      </h3>
-    </div>
+    <motion.div className={styles.MuncherInfoLeft}>
+      <LivesDisplay lives={lives} />
+      <ScoreDisplay points={points} />
+    </motion.div>
   );
 }

@@ -10,7 +10,14 @@ export function useMuncher() {
   const [lives, setLives] = useState(['x', 'x', 'x']);
   const [currentPosition, setCurrentPosition] = useState(0);
   const [playingMusic, setPlayingMusic] = useState(false);
-  const { playCorrect, playWrong, playJump, playMuncherMusic, playGameover, playNewWords } = useSounds();
+  const { 
+    playCorrect, 
+    playWrong, 
+    playJump, 
+    playMuncherMusic, stop,
+    playGameover, 
+    playNewWords 
+  } = useSounds();
   const {
     targetSound, setTargetSound,
     difficulty, setDifficulty,
@@ -126,7 +133,7 @@ export function useMuncher() {
     loadingGame,
     resetGame,
     handleMove, handleEat,
-    playMuncherMusic,
+    playMuncherMusic, stop, 
     playingMusic, setPlayingMusic
   };
 

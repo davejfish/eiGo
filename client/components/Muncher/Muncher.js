@@ -7,6 +7,7 @@ import MuncherGrid from '../MuncherGrid/MuncherGrid.js';
 import MuncherInfo from '../MuncherInfo/MuncherInfo.js';
 import SpeechControls from '../SpeechControls/SpeechControls.js';
 import SpeechToText from '../SpeechToText/SpeechToText.js';
+import TargetSound from '../TargetSound/TargetSound.js';
 import styles from './Muncher.css';
 
 
@@ -26,18 +27,21 @@ export default function Muncher() {
     resetGame,
     handleMove,
     handleEat,
-    playMuncherMusic,
+    playMuncherMusic, stop,
     playingMusic, setPlayingMusic,
   } = useMuncher();
+
+  if (playingMusic === false && gameover === false && game) {
+    playMuncherMusic();
+    setPlayingMusic(true);
+  }
 
   return (
     <>
       {targetSound && difficulty ? <div className={`${styles.MuncherGame}`}>
         <div className={styles.MuncherInfo}>
           <MuncherInfo lives={lives} points={points} />
-          <h2 className={'title'}>
-            {targetSound}
-          </h2>
+          <TargetSound targetSound={targetSound} />
           <SpeechControls />
         </div>
         <SpeechToText game={game} handleEat={handleEat} handleMove={handleMove} curPos={currentPosition} />
@@ -49,7 +53,9 @@ export default function Muncher() {
             targetSound={targetSound}
             setTargetSound={setTargetSound}
             difficulty={difficulty}
-            setDifficulty={setDifficulty} /> :
+            setDifficulty={setDifficulty}
+            setPlayingMusic={setPlayingMusic}
+            stop={stop} /> :
           <></>}
         <MuncherGrid 
           game={game} 

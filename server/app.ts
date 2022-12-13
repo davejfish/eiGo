@@ -12,6 +12,8 @@ import cookieParser from 'cookie-parser';
 import path from 'node:path';
 import routes from './routes.js';
 import errorHandler from './middleware/error.js';
+// necessary for npm build:server
+import { type Foo as UnusedFoo } from '../common/foo';
 
 dotenv.config();
 

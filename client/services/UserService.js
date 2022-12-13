@@ -1,3 +1,5 @@
+import { Navigate } from 'react-router-dom';
+
 const BASE_URL = 'http://localhost:7890';
 
 export async function signIn(user) {
@@ -55,6 +57,7 @@ export async function logoutUser() {
 
 export async function enforceUser(user, loading) {
   if (user === undefined && loading === false) {
-    location.replace('/auth/sign-in');
+    return <Navigate replace={true} to='/auth/sign-in' />;
+    // location.replace('/auth/sign-in');
   }
 }

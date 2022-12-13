@@ -1,3 +1,4 @@
+import { Navigate } from 'react-router-dom';
 import { useUser } from '../../context/UserContext.js';
 import { useMuncher } from '../../hooks/useMuncher.js';
 import { enforceUser } from '../../services/UserService.js';
@@ -38,6 +39,7 @@ export default function Muncher() {
 
   return (
     <>
+      {user === undefined && loading === false && <Navigate to='/auth/sign-in' />}
       {targetSound && difficulty ? <div className={`${styles.MuncherGame}`}>
         <div className={styles.MuncherInfo}>
           <MuncherInfo lives={lives} points={points} />

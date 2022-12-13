@@ -30,8 +30,8 @@ root.render(
         <Header />
         <Routes>
           <Route>
-            <Route path='auth/:method' element={ <Auth /> } />
             <Route index element={ <Muncher /> } />
+            <Route path='auth/:method' element={ <Auth /> } />
           </Route>
         </Routes>
       </Router>

@@ -2,7 +2,7 @@
   "name": "fullstack-base",
   "version": "0.0.1",
   "description": "A fullstack base repo using Express.js, React.js, Webpack, and TypeScript.",
-  "main": "dist/index.js",
+  "main": "dist/server/index.js",
   "type": "module",
   "scripts": {
     "test": "jest",

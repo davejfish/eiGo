@@ -10,9 +10,15 @@ export function useSounds() {
   const [playCorrect] = useSound(correct);
   const [playWrong] = useSound(wrong, { volume: 0.5 });
   const [playJump] = useSound(jump);
-  const [playMuncherMusic] = useSound(muncherMusic, { volume: 0.5 });
+  const [playMuncherMusic, { stop }] = useSound(muncherMusic, { volume: 0.1 });
   const [playGameover] = useSound(gameover);
   const [playNewWords] = useSound(newWords);
 
-  return { playCorrect, playWrong, playJump, playMuncherMusic, playGameover, playNewWords };
+  return { 
+    playCorrect, 
+    playWrong, 
+    playJump, 
+    playMuncherMusic, stop,
+    playGameover, 
+    playNewWords };
 };

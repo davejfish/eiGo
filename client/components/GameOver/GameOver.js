@@ -7,9 +7,11 @@ export default function GameOver({
   points, 
   resetGame, 
   targetSound, setTargetSound, 
-  difficulty, setDifficulty }) {
-
-  console.log('single phonics: ', singlePhonics);
+  difficulty, setDifficulty,
+  setPlayingMusic, stop }) {
+  
+  stop();
+  setPlayingMusic(false);
 
   const getRandomPhonics = (arr) => {
     arr = arr.split(' ');

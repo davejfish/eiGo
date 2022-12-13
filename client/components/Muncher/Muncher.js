@@ -27,15 +27,14 @@ export default function Muncher() {
     resetGame,
     handleMove,
     handleEat,
-    playMuncherMusic,
+    playMuncherMusic, stop,
     playingMusic, setPlayingMusic,
   } = useMuncher();
 
-  // if (playingMusic === false && gameover === false) {
-  //   console.log('are we even in here');
-  //   playMuncherMusic();
-  //   setPlayingMusic(true);
-  // }
+  if (playingMusic === false && gameover === false && game) {
+    playMuncherMusic();
+    setPlayingMusic(true);
+  }
 
   return (
     <>
@@ -54,7 +53,9 @@ export default function Muncher() {
             targetSound={targetSound}
             setTargetSound={setTargetSound}
             difficulty={difficulty}
-            setDifficulty={setDifficulty} /> :
+            setDifficulty={setDifficulty}
+            setPlayingMusic={setPlayingMusic}
+            stop={stop} /> :
           <></>}
         <MuncherGrid 
           game={game} 

@@ -1,10 +1,17 @@
 const singlePhonics = [
   'a i u e o',
-  'd b c m n',
+  'b g d c t',
+  'l m n p q',
+  'h k r s v',
+  'w x y z',
 ];
 
 const doublePhonics = [
-  'ee ea oo ou',
+  'ee ea ch sh',
+  'oo ar ou',
+  'or ir ow oy',
+  'oa ay ai',
+  'ck ng th wh'
 ];
 
 export { singlePhonics, doublePhonics };

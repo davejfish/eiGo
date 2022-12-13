@@ -8,7 +8,7 @@ import newWords from './sounds/newWords.mp3';
 
 export function useSounds() {
   const [playCorrect] = useSound(correct);
-  const [playWrong] = useSound(wrong, { volume: 0.5 });
+  const [playWrong] = useSound(wrong, { volume: 0.2 });
   const [playJump] = useSound(jump);
   const [playMuncherMusic, { stop }] = useSound(muncherMusic, { volume: 0.1 });
   const [playGameover] = useSound(gameover);

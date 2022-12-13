@@ -6,7 +6,8 @@ export default function GameOver({
   gameover, 
   points, 
   resetGame, 
-  targetSound, setTargetSound, 
+  targetSound, setTargetSound,
+  setTargetGroup, 
   difficulty, setDifficulty,
   setPlayingMusic, stop }) {
   
@@ -14,6 +15,7 @@ export default function GameOver({
   setPlayingMusic(false);
 
   const getRandomPhonics = (arr) => {
+    setTargetGroup(arr);
     arr = arr.split(' ');
     setTargetSound(arr[Math.floor(Math.random() * arr.length)]);
   };
@@ -27,6 +29,14 @@ export default function GameOver({
           Game Over!
         </h2>
         <h2>total points: {points}</h2>
+        <label className={'label'}>difficulty</label>
+        <div className={`select is-rounded ${styles.foo}`}> 
+          <select defaultValue={difficulty} onChange={(e) => setDifficulty(e.target.value)}>
+            <option value={null}>-</option>
+            <option value='E1'>3 letter words</option>
+            <option value='E2'>4-5 letter words</option>
+          </select>
+        </div>
         <label className={'label'}>phonics</label>
         <div className={`select is-rounded ${styles.foo}`}>
           <select defaultValue={targetSound} onChange={(e) => getRandomPhonics(e.target.value)}>
@@ -37,14 +47,6 @@ export default function GameOver({
               doublePhonics.map(phonics => (
                 <option key={phonics} value={phonics}>{phonics}</option>
               ))}
-          </select>
-        </div>
-        <label className={'label'}>difficulty</label>
-        <div className={`select is-rounded ${styles.foo}`}> 
-          <select defaultValue={difficulty} onChange={(e) => setDifficulty(e.target.value)}>
-            <option value={null}>-</option>
-            <option value='E1'>3 letter words</option>
-            <option value='E2'>4-5 letter words</option>
           </select>
         </div>
         <div className={`${styles.GameOverButton}`}>

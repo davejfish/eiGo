@@ -20,24 +20,18 @@ export function useMuncher() {
   } = useSounds();
   const {
     targetSound, setTargetSound,
+    targetGroup, setTargetGroup,
     difficulty, setDifficulty,
     game, setGame,
     loadingGame,
     muncherError,
   } = useWords();
 
-  // add logic to select a new phonics from phonic group
   const checkMatches = () => {
     if (matchesLeft < 1) {
-      playNewWords();
-      if (targetSound === 'ee') {
-        setTargetSound('ea');
-        setMatchesLeft(4);
-      }
-      else {
-        setTargetSound('ee');
-        setMatchesLeft(4);
-      }
+      const arr = targetGroup.split(' ');
+      setTargetSound(arr[Math.floor(Math.random() * arr.length)]);
+      setMatchesLeft(4);
     }
   };
 
@@ -56,10 +50,8 @@ export function useMuncher() {
     setMatchesLeft(4);
     setLives(['x', 'x', 'x']);
     setCurrentPosition(0);
-    setGame(await newGame(difficulty, targetSound));
   };
 
-  // const result = new RegExp(word).test(targetSound);
   const hasSubstring = (word) => {
     console.log('word is: ', word);
     if (word !== null) {
@@ -68,7 +60,6 @@ export function useMuncher() {
     return false;
   };
 
-  // refactor to include hasSubstring
   const handleEat = (box) => {
     if (hasSubstring(box.word)) {
       playCorrect();
@@ -125,6 +116,7 @@ export function useMuncher() {
   return { 
     game, setGame, 
     targetSound, setTargetSound, 
+    targetGroup, setTargetGroup,
     difficulty, setDifficulty,
     points, 
     lives, 

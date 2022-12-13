@@ -58,6 +58,5 @@ export async function logoutUser() {
 export async function enforceUser(user, loading) {
   if (user === undefined && loading === false) {
     return <Navigate replace={true} to='/auth/sign-in' />;
-    // location.replace('/auth/sign-in');
   }
 }

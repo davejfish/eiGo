@@ -19,6 +19,7 @@ export default function Muncher() {
   const { 
     game,  
     targetSound, setTargetSound,
+    targetGroup, setTargetGroup,
     difficulty, setDifficulty,
     points, 
     lives, 
@@ -46,7 +47,11 @@ export default function Muncher() {
           <TargetSound targetSound={targetSound} />
           <SpeechControls />
         </div>
-        <SpeechToText game={game} handleEat={handleEat} handleMove={handleMove} curPos={currentPosition} />
+        <SpeechToText 
+          game={game} 
+          handleEat={handleEat} 
+          handleMove={handleMove} 
+          curPos={currentPosition} />
         {gameover ? 
           <GameOver 
             resetGame={resetGame} 
@@ -54,6 +59,7 @@ export default function Muncher() {
             gameover={gameover} 
             targetSound={targetSound}
             setTargetSound={setTargetSound}
+            setTargetGroup={setTargetGroup}
             difficulty={difficulty}
             setDifficulty={setDifficulty}
             setPlayingMusic={setPlayingMusic}
@@ -68,6 +74,7 @@ export default function Muncher() {
         : <Landing 
           targetSound={targetSound}
           setTargetSound={setTargetSound}
+          setTargetGroup={setTargetGroup}
           difficulty={difficulty}
           setDifficulty={setDifficulty} />}
     </>

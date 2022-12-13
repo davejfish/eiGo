@@ -4,7 +4,13 @@ import { enforceUser } from '../../services/UserService.js';
 import { doublePhonics, singlePhonics } from '../../utils/wordUtils.js';
 import styles from './Landing.css';
 
-export default function Landing({ targetSound, setTargetSound, difficulty, setDifficulty }) {
+export default function Landing({ 
+  targetSound, 
+  setTargetSound, 
+  setTargetGroup,
+  difficulty, 
+  setDifficulty 
+}) {
   const { user, loading } = useUser();
   enforceUser(user, loading);
 
@@ -16,6 +22,7 @@ export default function Landing({ targetSound, setTargetSound, difficulty, setDi
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
+    setTargetGroup(formData.get('phonics'));
     const target = getRandomPhonics(formData.get('phonics'));
     setDifficulty(formData.get('difficulty'));
     setTargetSound(target);
@@ -25,7 +32,7 @@ export default function Landing({ targetSound, setTargetSound, difficulty, setDi
     <div className={styles.landing}>
       <div className={`box ${styles.landingContainer}`}>
         <h2>Select your phonics...</h2>
-        <form className={styles.LandingForm} onSubmit={(e) => handleSubmit(e)}>
+        <form className={`${styles.LandingForm} box`} onSubmit={(e) => handleSubmit(e)}>
           <label className={'label'}>difficulty</label>
           <div className={`select is-rounded ${styles.foo}`}> 
             <select required onChange={(e) => setDifficulty(e.target.value)} name={'difficulty'}>

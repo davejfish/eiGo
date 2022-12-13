@@ -5,6 +5,7 @@ import { useSounds } from './useSounds.js';
 
 export default function useWords() {
   const [targetSound, setTargetSound] = useState(null);
+  const [targetGroup, setTargetGroup] = useState(null);
   const [difficulty, setDifficulty] = useState('E1');
   const [game, setGame] = useState(null);
   const [loadingGame, setLoadingGame] = useState(true);
@@ -30,6 +31,7 @@ export default function useWords() {
   }, [difficulty, targetSound]);
   return { 
     targetSound, setTargetSound,
+    targetGroup, setTargetGroup,
     difficulty, setDifficulty,
     game, setGame,
     loadingGame,

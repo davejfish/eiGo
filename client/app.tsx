@@ -6,6 +6,7 @@ import Auth from './components/Auth/Auth';
 import { UserContextProvider, useUser } from './context/UserContext.js';
 import Header from './components/Header/Header.js';
 import Muncher from './components/Muncher/Muncher';
+import { SpeechProvider } from '@speechly/react-client';
 import { createSpeechlySpeechRecognition } from '@speechly/speech-recognition-polyfill';
 import SpeechRecognition from 'react-speech-recognition';
 

@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 import newGame from '../GameState/muncherState.js';
-import { useSounds } from './useSounds.js';
-
 
 export default function useWords() {
   const [targetSound, setTargetSound] = useState(null);

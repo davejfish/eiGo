@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import newGame from '../GameState/muncherState.js';
 import { useSounds } from './useSounds.js';
 import useWords from './useWords.js';
 

@@ -12,7 +12,7 @@ export default function TargetSound({ targetSound }) {
         repeat: Infinity,
         repeatDelay: 2,
       }}>
-      <h2 className={'title'}>
+      <h2 className={'title is-size-1'}>
         {targetSound}
       </h2>
     </motion.div>

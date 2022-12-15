@@ -4,22 +4,24 @@ import styles from './SpeechToText.css';
 export default function SpeechToText({ game, handleMove, handleEat, curPos }) { 
 
   function findWord(word) {
-    if (game[curPos + 1])
-      if (game[curPos + 1].word === word) {
-        return game[curPos + 1];
-      }
-    if (game[curPos + 6])
-      if (game[curPos + 6].word === word) {
-        return game[curPos + 6];
-      }
-    if (game[curPos - 1])
-      if (game[curPos - 1].word === word) {
-        return game[curPos - 1];
-      }
-    if (game[curPos - 6])
-      if (game[curPos - 6].word === word) {
-        return game[curPos - 6];
-      }
+    switch (word) {
+      case 'up':
+        if (game[curPos - 6]) 
+          return game[curPos - 6];
+        else return null;
+      case 'down':
+        if (game[curPos + 6])
+          return game[curPos + 6];
+        else return null;
+      case 'left':
+        if (game[curPos - 1])
+          return game[curPos - 1];
+        else return null;
+      case 'right':
+        if (game[curPos + 1])
+          return game[curPos + 1];
+        else return null;
+    }
   }
 
   // set Error to display a message to user if command is not correct
@@ -66,7 +68,7 @@ export default function SpeechToText({ game, handleMove, handleEat, curPos }) {
   }
 
   return (
-    <div className={styles.transcript}>
+    <div className={`${styles.transcript} is-size-3`}>
       <h2 >command:</h2>
       <h2>{transcript}</h2>
     </div>

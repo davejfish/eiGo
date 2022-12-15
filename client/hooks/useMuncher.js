@@ -14,9 +14,9 @@ export function useMuncher() {
     playCorrect, 
     playWrong, 
     playJump, 
-    playMuncherMusic, stop,
     playGameover, 
-    playNewWords 
+    playNewWords,
+    sound,
   } = useSounds();
   const {
     targetSound, setTargetSound,
@@ -32,6 +32,7 @@ export function useMuncher() {
       const arr = targetGroup.split(' ');
       setTargetSound(arr[Math.floor(Math.random() * arr.length)]);
       setMatchesLeft(4);
+      playNewWords();
     }
   };
 
@@ -53,7 +54,6 @@ export function useMuncher() {
   };
 
   const hasSubstring = (word) => {
-    console.log('word is: ', word);
     if (word !== null) {
       return word.indexOf(targetSound) !== -1 ? true : false;
     }
@@ -125,8 +125,8 @@ export function useMuncher() {
     loadingGame,
     resetGame,
     handleMove, handleEat,
-    playMuncherMusic, stop, 
-    playingMusic, setPlayingMusic
+    playingMusic, setPlayingMusic,
+    sound,
   };
 
 }

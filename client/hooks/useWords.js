@@ -24,7 +24,6 @@ export default function useWords() {
       }
     };
     if (difficulty && targetSound) {
-      console.log('getting words');
       getWords();
     }
       

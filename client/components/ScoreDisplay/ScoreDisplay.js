@@ -11,8 +11,8 @@ export default function ScoreDisplay({ points }) {
         duration: 2,
         ease: 'easeInOut',
       }}>
-      <h3 className={'block'}>
-        points: {points}
+      <h3 className={'block title is-size-3'}>
+        {points}
       </h3>
     </motion.div>
   );

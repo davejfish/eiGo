@@ -12,10 +12,11 @@ export default function LivesDisplay({ lives }) {
         ease: 'easeInOut',
       }}>
       <motion.h3
-        className={'block'}>
+        className={'block title is-size-3'}>
         lives: {lives.map((life, index) => (
           <motion.span 
-            key={index}>
+            key={index}
+            className={'title is-size-3'}>
             {life}
           </motion.span>
         ))}

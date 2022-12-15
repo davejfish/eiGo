@@ -15,9 +15,9 @@ export default function MuncherGrid({ game, loadingGame, handleMove, currentPosi
           ease: 'easeInOut',
         }} 
         key={square.position} 
-        className={styles.square} 
+        className={`${styles.square}`} 
         onClick={(e) => handleMove(square)}>
-          <span>{square.word}</span>
+          <span className={'is-size-4'}>{square.word}</span>
           {square.position === currentPosition ? <img src={player} /> : <></>}
         </motion.div>
       ))}

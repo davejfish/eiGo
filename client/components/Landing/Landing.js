@@ -31,9 +31,9 @@ export default function Landing({
   return (
     <div className={styles.landing}>
       <div className={`box ${styles.landingContainer}`}>
-        <h2>Select your phonics...</h2>
+        <h2 className={'title'}>Select your phonics...</h2>
         <form className={`${styles.LandingForm} box`} onSubmit={(e) => handleSubmit(e)}>
-          <label className={'label'}>difficulty</label>
+          <label className={'label is-size-3'}>difficulty</label>
           <div className={`select is-rounded ${styles.foo}`}> 
             <select required onChange={(e) => setDifficulty(e.target.value)} name={'difficulty'}>
               <option value={null}>-</option>
@@ -41,7 +41,7 @@ export default function Landing({
               <option value='E2'>4-5 letter words</option>
             </select>
           </div>
-          <label className={'label'}>phonics</label>
+          <label className={'label is-size-3'}>phonics</label>
           <div className={`select is-rounded ${styles.foo}`}>
             <select required name='phonics'>
               <option value={null}>-</option>

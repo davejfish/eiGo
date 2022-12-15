@@ -12,6 +12,7 @@
 
 .square {
   display: flex;
+  border-radius: 5px;
   width: 100%;
   max-width: 100px;
   min-height: 69px;

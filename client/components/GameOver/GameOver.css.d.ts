@@ -5,6 +5,7 @@ interface CssExports {
   'GameOverContainer': string;
   'gameOverButton': string;
   'gameOverContainer': string;
+  'gameoverForm': string;
   'theContent': string;
 }
 export const cssExports: CssExports;

@@ -1,5 +1,5 @@
 .LandingForm {
-  height: 250px;
+  height: 300px;
   width: 300px;
   background-color: hsl(207, 61%, 53%);
   padding: 10px;
@@ -12,16 +12,17 @@
 }
 
 .LandingForm label {
+  color: white;
   margin: 5px;
 }
 
 .LandingForm button {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .landingContainer {
   width: fit-content;
-  background-color: hsl(44, 100%, 77%);;
+  background-color: hsl(44, 100%, 77%);
 }
 
 .landing {

@@ -1077,7 +1077,12 @@ Round
 Since
 Spite
 Under
-Until`;
+Until
+Sway
+Slay
+Okay
+Pray
+Days`;
 
 // split the words based on new line
 const wordArr = words.split('\n');

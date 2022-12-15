@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Klee+One&display=swap');
+
+.tutorial {
+  color:white;
+}
+
+.tutorialModal {
+  display: flex;
+  flex-direction: column;
+  justify-content: unset;
+  font-family: 'Klee One', cursive;
+  min-width: 350px;
+  max-width: 500px;
+  height: 500px;
+  border: solid 5px hsl(44, 100%, 77%);
+  /* background-color: hsl(207, 61%, 53%); */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: scroll;
+}
+
+

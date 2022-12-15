@@ -1,6 +1,5 @@
 import pool from '../../database.js';
 import buildQuery from '../utils/wordUtils.js';
-import wordArr from '../utils/wordUtils.js';
 
 export default class Words {
   id;
@@ -13,7 +12,6 @@ export default class Words {
     this.difficulty = difficulty;
   }
 
-  // add target phonic for better result
   static async getTargetWords(difficulty, target) {
     const { rows } = await pool.query(`
       SELECT word FROM eigo_words

@@ -9,3 +9,8 @@
 .EiGoHeader button {
   margin: 5px;
 }
+
+.headerFlex {
+  display: flex;
+  align-items: center;
+}

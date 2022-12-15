@@ -1,12 +1,18 @@
 import styles from './MuncherGrid.css';
 import player from './ranger_yellow.png';
 import { motion } from 'framer-motion';
+import Loading from '../Loading/Loading.js';
 
 export default function MuncherGrid({ game, loadingGame, handleMove, currentPosition }) {
 
+  if (loadingGame) {
+    return <Loading />;
+  }
+    
+
   return (
     <div className={`${styles.muncherGrid}`} style={{ display: 'grid' }}>
-      {loadingGame ? <h2>loading...</h2> : game.map((square) => (
+      {game.map((square) => (
         <motion.div animate={{
           scale: [1, 1.1, .9, 1],
         }}

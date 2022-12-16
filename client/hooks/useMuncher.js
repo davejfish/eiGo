@@ -29,7 +29,12 @@ export function useMuncher() {
   const checkMatches = () => {
     if (matchesLeft < 1) {
       const arr = targetGroup.split(' ');
-      setTargetSound(arr[Math.floor(Math.random() * arr.length)]);
+      let newSound;
+      do {
+        newSound = arr[Math.floor(Math.random() * arr.length)];
+        console.log('newSound: ', newSound);
+      } while (targetSound === newSound);
+      setTargetSound(newSound);
       setMatchesLeft(4);
       playNewWords();
     }

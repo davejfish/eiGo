@@ -1082,7 +1082,12 @@ Sway
 Slay
 Okay
 Pray
-Days`;
+Days
+Whale
+Wheat
+Whine
+Whip
+Whirl`;
 
 // split the words based on new line
 const wordArr = words.split('\n');

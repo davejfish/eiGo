@@ -1106,7 +1106,7 @@ const buildQuery = () => {
 
     if (index + 1 === totalWords)
       valueString = valueString.slice(0, -1);
-    valueArr.push(word, word.length === 3 ? 'E1' : 'E2');
+    valueArr.push(word.toLocaleLowerCase(), word.length === 3 ? 'E1' : 'E2');
     i += 2;
   });
   return [valueString, valueArr];
